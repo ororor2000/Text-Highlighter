@@ -1,0 +1,69 @@
+{
+  "name": "text-highlighter",
+  "displayName": "Text Highlighter",
+  "description": "Highlight text with dynamic colors, clear groups, and remove highlights based on selected word.",
+  "version": "1.0.0",
+  "publisher": "your-publisher-id",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "activationEvents": [
+    "onCommand:extension.highlight",
+    "onCommand:extension.clearAllHighlights",
+    "onCommand:extension.removeHighlightFromGroup"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.highlight",
+        "title": "Highlight Text Based on Selection"
+      },
+      {
+        "command": "extension.clearAllHighlights",
+        "title": "Clear All Highlights"
+      },
+      {
+        "command": "extension.removeHighlightFromGroup",
+        "title": "Remove Highlight From Group"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.highlight",
+        "key": "ctrl+1",
+        "mac": "cmd+1",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.clearAllHighlights",
+        "key": "ctrl+shift+2",
+        "mac": "cmd+shift+2",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.removeHighlightFromGroup",
+        "key": "ctrl+shift+1",
+        "mac": "cmd+shift+1",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "textHighlighter.colors": {
+          "type": "array",
+          "default": [
+            "rgba(255, 85, 85, 1)",
+            "rgba(85, 255, 85, 1)",
+            "rgba(85, 85, 255, 1)"
+          ],
+          "description": "Array of colors for highlighting."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  }
+}
